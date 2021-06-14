@@ -66,7 +66,7 @@ function writeToFile(fileName, data) {
     console.log(data)
     //fileName = `${response.title.split(" ").join("")}.md`
     fs.writeFile(fileName, data, err => {
-        err ? console.log(err) : console.log("Suck it");
+        err ? console.log(err) : console.log("Success! Your README has been generated.");
     })
     console.log(data)
 }
