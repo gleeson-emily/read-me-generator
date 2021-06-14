@@ -44,7 +44,8 @@ const questions = [{
              "BSD 3-Clause New or Revisex License",
              "Eclipse Public License v2.0",
              "GNU General Public License v2.0",
-             "Mozilla Public License 2.0"]
+             "Mozilla Public License 2.0",
+             "None",]
 
   }, 
   {
@@ -60,25 +61,25 @@ const questions = [{
 },
 ]
    
-
-
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fileName = `${data.title.split(" ").join("")}.md`
-    fs.writeFile(fileName, generateMarkdown)
-;}
-
+    console.log(data)
+    //fileName = `${response.title.split(" ").join("")}.md`
+    fs.writeFile(fileName, data, err => {
+        err ? console.log(err) : console.log("Suck it");
+    })
+    console.log(data)
+}
 
 // // TODO: Create a function to initialize app
     function init() {
         inquirer.prompt(questions)
-        .then ((response) => {
-        console.log(response);
-        let data = response
-        console.log(data)
-       }, )
-
-    }
+        .then((response) => {
+            console.log(response)
+            const answers = generateMarkdown.generateMarkdown(response)
+            writeToFile(`${response.title}.md`, answers);
+    })
+}
 
 // // Function call to initialize app
  init();
